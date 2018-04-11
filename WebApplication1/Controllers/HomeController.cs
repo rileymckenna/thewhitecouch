@@ -28,7 +28,10 @@ namespace WebApplication1.Controllers
 
             return View();
         }
-
+        public IActionResult Assets()
+        {
+            return View("Index");
+        }
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

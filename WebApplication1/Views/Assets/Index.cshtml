@@ -1,0 +1,129 @@
+﻿@model IEnumerable<WebApplication1.Assets>
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@using (Html.BeginForm("Index", "Assets", FormMethod.Get))
+{
+    <p>
+        Search By Description: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+
+}
+<form id="date-aval" action="@Url.Action("Index", "Asset")" method="post">
+    <input type="date" id="from" name="dateFrom" />
+    <input type="date" id="to" name="dateTo"/>
+    <input type="submit" value="Set Range"/>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.ActionLink("Date Available", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.DisplayName("Available")
+            </th>
+            <th>
+                @Html.DisplayName("Title")
+            </th>
+            <th>
+                @Html.DisplayName("Description")
+            </th>
+            <th>
+                @Html.DisplayName("Height")
+            </th>
+            <th>
+                @Html.DisplayName("Width")
+            </th>
+            <th>
+                @Html.DisplayName("Length")
+            </th>
+            <th>
+                @Html.DisplayName("Weight")
+            </th>
+            <th>
+                @Html.DisplayName("Rental Price")
+            </th>
+            <th>
+                @Html.ActionLink("Category", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.DisplayName("Color")
+            </th>
+            <th>
+                @Html.DisplayName("Image")
+            </th>
+            <th>
+                @Html.DisplayName("Location")
+            </th>
+            <th>
+                @Html.DisplayName("Related Items")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.AquiredDate
+                </td>
+                <td>
+                    @item.Checkedout
+                </td>
+                <td>
+                    @item.Comments
+                </td>
+                <td>
+                    @item.Description
+                </td>
+                <td>
+                    @item.Height
+                </td>
+                <td>
+                    @item.Width
+                </td>
+                <td>
+                    @item.Length
+                </td>
+                <td>
+                    @item.Weight
+                </td>
+                <td>
+                    @item.Purchaseprice
+                </td>
+                <td>
+                    @Html.DisplayFor(modelitem => item.Category.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelitem => item.Color.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelitem => item.Image.Caption)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelitem => item.Location.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelitem => item.Related.Comments)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Assetid">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Assetid">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Assetid">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
