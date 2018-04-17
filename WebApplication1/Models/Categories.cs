@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApplication1
+namespace webcouch.Models
 {
     public partial class Categories
     {

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Models;
+using webcouch.Models;
 
 namespace WebApplication1.Controllers
 {

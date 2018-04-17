@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication1;
 using X.PagedList;
 using PagedList;
+using webcouch.Models;
 
 namespace WebApplication1.Controllers
 {

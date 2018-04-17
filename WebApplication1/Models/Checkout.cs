@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApplication1
+namespace webcouch.Models
 {
     public partial class Checkout
     {
@@ -15,5 +15,8 @@ namespace WebApplication1
         public Assets Asset { get; set; }
         public Customers Contact { get; set; }
         public Locations Location { get; set; }
+        public System.DateTime OrderDate { get; set; }
+        public List<AssetDetails> AssetDetail { get; set; }
+        public decimal Total { get; set; }
     }
 }

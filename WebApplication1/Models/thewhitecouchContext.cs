@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using webcouch.Models;
 
-namespace WebApplication1
+namespace webcouch.Models
 {
     public partial class thewhitecouchContext : DbContext
     {
@@ -13,6 +14,9 @@ namespace WebApplication1
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<Images> Images { get; set; }
         public virtual DbSet<Locations> Locations { get; set; }
+        public virtual DbSet<AssetDetails> AssetDetail { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
+
 
         public thewhitecouchContext(DbContextOptions<thewhitecouchContext> options)
             : base(options) { }
@@ -224,5 +228,6 @@ namespace WebApplication1
                     .HasMaxLength(50);
             });
         }
+        public DbSet<webcouch.Models.ShoppingCartViewModel> ShoppingCartViewModel { get; set; }
     }
 }
